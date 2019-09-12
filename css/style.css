@@ -1,0 +1,1421 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat:300,400,500,600,700&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Playfair+Display:400,400i,700,700i,900,900i&display=swap');
+
+/* Global */
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    background: #1D1D1D;
+}
+
+section.visible {
+    opacity: 1;
+    transform: translate(0, 0); 
+}
+
+a {
+    cursor: pointer;
+}
+
+.btn {
+    font-family: "Montserrat", sans-serif;
+    color: #fff;
+    border: 2px solid #fff;
+    padding: 12px 0;
+    border-radius: 4px;
+    width: 168px;
+    text-align: center;
+    text-decoration: none;
+    margin-bottom: 20px;
+    transition: all .4s ease-in;
+    font-size: 16px;
+    line-height: 26px;
+    cursor: pointer !important;
+}
+
+.btn:hover {
+    color: #1D1D1D;
+    border: 2px solid #fff;
+    background: #fff;
+}
+
+.btn:last-child {
+    margin-bottom: 0;
+}
+
+h2 {
+    font-family: 'Montserrat', sans-serif;
+    color: #fff;
+    font-size: 40px;
+    line-height: 50px;
+    text-transform: uppercase;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 300;
+    margin-bottom: 36px;
+    text-align: center;
+}
+
+.hide-on-mobile {
+    display: none;
+}
+
+.hide-on-tablet {
+    display: block;
+}
+
+.stage {
+    border-bottom: 3px solid #444;
+    display: flex;
+    height: 330px;
+    width: 100%;
+}
+
+.box {
+    align-self: flex-end;
+    animation-duration: 2s;
+    animation-iteration-count: infinite;
+    margin: 0 auto 0 auto;
+    transform-origin: bottom;
+}
+.bounce {
+    animation-name: bounce;
+    animation-timing-function: ease;
+}
+@keyframes bounce {
+    0%   { transform: scale(1,1)    translateY(0); }
+    10%  { transform: scale(1.1,.9) translateY(0); }
+    30%  { transform: scale(.9,1.1) translateY(-50px); }
+    50%  { transform: scale(1,1)    translateY(0); }
+    100% { transform: scale(1,1)    translateY(0); }
+}
+
+/* Header section */
+
+header {
+    height: 100vh;
+    box-sizing: border-box;
+    background: url('../assets/images/hero_img_mobile.png');
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+nav {
+    padding: 55px 36px 0 0; 
+    width: 100%;
+    position: absolute;
+    display: flex;
+    justify-content: flex-end;
+}
+
+nav .btn {
+    display: none;
+}
+
+
+/* Main menu positionning */
+.main-nav {
+    font-family: 'Montserrat', sans-serif !important;
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    text-align: center;
+    background: rgba(0, 0, 0, .5);
+    opacity: 0;
+    z-index: -1;
+    visibility: hidden;
+    transition: all .375s;
+    text-transform: uppercase;
+}
+
+.main-nav.is-open {
+    opacity: 1;
+    z-index: 100;
+    visibility: visible;
+}
+
+/* Yellow band effect */
+.main-nav::before {
+	 content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: -15px;
+    background: rgba(0, 0, 0, .9);
+    transform-origin: 0 0;
+    transform: skew(-14deg) translateX(-120%);
+    transition: all .275s .1s;
+}
+
+.main-nav.is-open::before {
+    transform: skew(-14deg) translateX(0);
+}
+
+/* Skewing effect on menu links */
+.main-nav ul {
+    display: inline-flex;
+    flex-direction: column;
+    height: 93%; /* Should be 100%, but we have a notice message :D */
+    align-items: flex-end;
+    justify-content: center;
+    transform: translateX(-18%) skew(-16deg);
+}
+
+.main-nav li {
+    display: block;
+    margin: .5rem 0;
+    text-align: right;
+    transform: skew(16deg);
+}
+
+/* Apparition effect on links */
+.main-nav a {
+    opacity: 0;
+    transform: translateY(-10px);
+}
+
+.main-nav.is-open a {
+    opacity: 1;
+    transform: translateY(0);
+}
+.main-nav li:nth-child(1) a {
+	transition: all 275ms 175ms
+}
+.main-nav li:nth-child(2) a {
+	transition: all 275ms 225ms
+}
+.main-nav li:nth-child(3) a {
+	transition: all 275ms 275ms
+}
+.main-nav li:nth-child(4) a {
+	transition: all 275ms 325ms
+}
+.main-nav li:nth-child(5) a {
+	transition: all 275ms 375ms
+}
+.main-nav li:nth-child(6) a {
+	transition: all 275ms 425ms
+}
+
+
+/* Decoration */
+.main-nav ul,
+.main-nav li {
+	list-style: none;
+	padding: 0;
+}
+.main-nav a {
+	display: block;
+	padding: 12px 0;
+	color: #fff;
+	font-size: 1.4em;
+	text-decoration: none;
+}
+
+.open-main-nav {
+	position: absolute;
+	top: 55px;
+	padding-top: 20px;
+	left: 45px;
+	z-index: 1000;
+	background: none;
+	border: 0;
+	cursor: pointer;
+}
+.open-main-nav:focus {
+	outline: none;
+}
+.burger {
+position: fixed;
+	display: block;
+	width: 32px;
+	height: 4px;
+	margin: 0 auto;
+	background: #fff;
+    -webkit-box-shadow: -2px 3px 43px 4px rgba(0,0,0,0.75);
+    -moz-box-shadow: -2px 3px 43px 4px rgba(0,0,0,0.75);
+    box-shadow: -2px 3px 43px 4px rgba(0,0,0,0.75);
+	transition: all .275s;
+}
+
+.burger:after,
+.burger:before {
+	content: '';
+    display: block;
+	height: 100%;
+	background: #fff;
+	transition: all .275s;
+}
+
+.burger:after {
+    transform: translateY(-14px);
+}
+
+.burger:before {
+	transform: translateY(-20px);
+}
+
+/* Toggle State part */
+.is-open .burger {
+	transform: skew(5deg) translateY(-8px) rotate(-42deg);
+}
+
+.is-open .burger:before {
+	transform: translateY(0px) skew(-10deg) rotate(75deg);
+}
+
+.is-open .burger:after {
+	transform: translateY(-12px) translateX(10px) skew(-20deg);
+    opacity: 0;
+}
+
+/* MENU Text part */
+
+.burger-text {
+	display: block;
+	font-size: .675rem;
+	letter-spacing: .05em;
+	margin-top: .5em;
+	text-transform: uppercase;
+	font-weight: 500;
+	text-align: center;
+	color: #fff;
+}
+
+/* Slow motion button */
+[id="slowmo"] {
+	position: absolute;
+	top: 20px;
+	right: 20px;
+	padding: 10px;
+	border: 0;
+	font-size: 1rem;
+	color: #fff;
+	font-weight: bold;
+	cursor: pointer;
+	transition: all .275s;
+}
+
+[id="slowmo"] span {
+	display: block;
+	font-weight: normal;
+}
+
+[id="slowmo"]:hover,
+[id="slowmo"]:focus {
+	background: #fff;
+}
+
+[id="slowmo"].is-slowmo span:after {
+	content: 'Activated';
+	display: block;
+	font-weight: bold;
+}
+
+/* When slowmotion is activated */
+
+.is-slowmo + .device .open-main-nav .burger,
+.is-slowmo + .device .open-main-nav .burger:before,
+.is-slowmo + .device .open-main-nav .burger:after,
+.is-slowmo + .device .main-nav,
+.is-slowmo + .device .main-nav::before,
+.is-slowmo + .device .main-nav a {
+	transition-duration: 3s;
+}
+.is-slowmo + .device .main-nav li:nth-child(1) a {
+	transition-delay: 1750ms
+}
+.is-slowmo + .device .main-nav li:nth-child(2) a {
+	transition-delay: 2250ms
+}
+.is-slowmo + .device .main-nav li:nth-child(3) a {
+	transition-delay: 2750ms
+}
+.is-slowmo + .device .main-nav li:nth-child(4) a {
+	transition-delay: 3250ms
+}
+.is-slowmo + .device .main-nav li:nth-child(5) a {
+	transition-delay: 3750ms
+}
+
+header .header-navigation {
+    display: none;
+}
+
+/* Header container */
+
+header .container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    color: #fff;
+}
+
+header .container .container-logo {
+    text-align: center;
+}
+
+.logo {
+    width: 80%;
+    text-align: center;
+}
+
+header .container .container-logo div {
+    font-family: "Montserrat", sans-serif;
+    margin-top: 36px;
+    display: flex;
+    flex-direction: column;
+    font-size: 16px;
+    text-transform: uppercase;
+}
+
+header .container .container-logo div span {
+    font-weight: 700;
+}
+
+header .container .container-logo div hr {
+    width: 50%;
+    margin: 12px auto;
+}
+
+header .container .container-countdown {
+    font-family: "Montserrat", sans-serif;
+    width: 80%;
+    margin: 60px auto 0 auto;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+
+header .container .container-countdown ul {
+    font-size: 16px;
+    font-weight: 300;
+    background: #1D1D1D;
+    width: 23%;
+    height: 68px;
+    border-radius: 4px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+header .container .container-countdown ul:last-child {
+    margin-right: 0;
+}
+
+header .container .container-countdown ul li {
+    margin-bottom: 8px;
+}
+
+header .container .container-countdown ul li:last-child {
+    margin-bottom: 0;
+}
+
+header .container .container-countdown ul li span {
+    font-weight: 700;
+    letter-spacing: .7px;
+}
+
+header .scroll-down-icon {
+    position: absolute;
+    bottom: 40px;
+}
+
+/* Introduction section */
+
+.intro-section {
+    padding: 60px 36px;
+    text-align: center;
+    color: #fff;
+}
+
+.intro-section .container h3 {
+    font-family: 'Playfair Display';
+    font-weight: 300;
+    font-size: 20px;
+    line-height: 30px;
+}
+
+.intro-section .container hr  {
+    margin: 28px auto;
+}
+
+.intro-section .container div  {
+    margin-top: 52px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Quote section */
+
+.quote-section {
+    height: 40vh;
+    background: url('../assets/images/quote_img_mobile.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    color: #fff;
+    display: table;
+    width: 100%;
+    padding: 0 36px;
+}
+
+.quote-section .container {
+    text-align: center;
+    margin: 0 auto;
+    display: table-cell;
+    vertical-align: middle;
+    width: 100%;
+}
+
+.quote-section .container blockquote {
+    font-family: 'Playfair Display';
+    font-weight: 300;
+    font-size: 32px;
+    line-height: 42px;
+    margin-bottom: 28px;
+}
+
+.quote-section .container span {
+    font-family: "Montserrat", sans-serif;
+    font-size: 18px;
+}
+
+/* Venue section */
+
+.venue-section {
+    padding: 60px 36px;
+    color: #fff;
+}
+
+.venue-section .container {
+    background: #292929;
+    text-align: center;
+}
+
+.venue-section .container .container-details {
+    padding: 40px 32px;
+    box-sizing: border-box;
+}
+
+.venue-section .container .container-details p {
+    color: #fff;
+    opacity: .8;
+    font-family: 'Playfair Display';
+    font-size: 16px;
+    line-height: 26px;
+}
+
+.venue-section .container .container-details .read-more-btn {
+    font-family: 'Montserrat';
+    font-size: 16px;
+    font-weight: 400;
+    display: block;
+}
+
+.venue-section .container .container-details .more {
+    display: none;
+}
+
+.venue-section .container .container-details div  {
+    margin-top: 52px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.venue-section .container .container-img  {
+    background: url('../assets/images/venue_img_mobile.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 30vh;
+}
+
+/* Info section */
+
+.info-section {
+    background: url('../assets/images/skyline_dortmund.svg');
+    background-size: 220%;
+    background-position: 20%;
+    background-repeat: no-repeat;
+    color: #fff;
+    box-sizing: border-box;
+    margin-bottom: 60px;
+}
+
+.info-section .container {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}
+
+.info-section .container hr {
+    width: 60%;
+    margin: 28px auto;
+}
+
+.info-section .container ul li {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 16px;
+    margin-bottom: 8px;
+}
+
+.info-section .container ul li:first-child {
+    font-size: 18px;
+    text-transform: uppercase;
+    margin-bottom: 12px;
+}
+
+.info-section .container ul li:last-child {
+    margin-bottom: 0;
+}
+
+.info-section .container ul li img {
+    margin-right: 8px;
+}
+
+/* Gallery section */
+
+.gallery-section h2 {
+    font-size: 40px;
+    text-transform: uppercase;
+    text-align: center;
+    color: #fff;
+    margin-bottom: 36px;
+}
+
+.gallery-section video {
+    width: 100%;
+    height: 320px;
+}
+
+/* How to section */
+
+.howto-section {
+    padding: 60px 36px;
+    color: #fff;
+}
+
+.howto-section .container div div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 36px;
+}
+
+.howto-section .container div div:last-child {
+    margin-bottom: 0;
+}
+
+.howto-section .container div div span {
+    font-family: 'Montserrat', sans-serif;
+    color: #1D1D1D;
+    background: #fff;
+    border-radius: 50%;
+    width: 48px;
+    height: 48px;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    margin-bottom: 16px;
+    font-size: 18px;
+}
+
+.howto-section .container div div p {
+    color: #fff;
+    opacity: .8;
+    font-family: 'Playfair Display';
+    font-size: 18px;
+    line-height: 28px;
+    width: 80%;
+    text-align: center;
+    margin: 0 auto;
+}
+
+
+/* Contact section */
+
+.contact-section {
+    background: linear-gradient(180deg, rgba(29,29,29,1) 50%, rgba(46, 46, 46, 1) 100%), -webkit-linear-gradient(180deg, rgba(29,29,29,1) 50%, rgba(46, 46, 46, 1) 100%);
+    padding: 60px 36px;
+}
+
+.contact-section form {
+    display: flex;
+    flex-direction: column;
+}
+
+.contact-section form div {
+    display: flex;
+    flex-direction: column;
+}
+
+.contact-section form div:first-child {
+    margin-bottom: 20px;
+}
+
+.contact-section form label {
+    color: #fff;
+    font-family: 'Montserrat', sans-serif;
+    margin-bottom: 12px;
+    font-size: 20px;
+
+}
+
+.contact-section form input {
+    font-family: 'Montserrat', sans-serif;
+    height: 52px;
+    width: 100%;
+    border-radius: 4px;
+    font-size: 16px;
+    background: rgba(255, 255, 255, 0.1);
+    color: #fff;
+    border: none;
+    text-indent: 12px;
+    padding: 3px 0 0 0;
+    margin-bottom: 20px;
+}
+
+.contact-section form input:last-child {
+    margin-bottom: 0;
+}
+
+::placeholder {
+    color: #fff;
+    opacity: .5;
+}
+
+.contact-section form div:first-child input{
+    margin-bottom: 12px; 
+}
+
+.contact-section form div:first-child input:last-child {
+    margin-bottom: 0; 
+}
+
+.contact-section textarea {
+    font-family: 'Montserrat', sans-serif;
+    border-radius: 4px;
+    font-size: 17px;
+    line-height: 25px;
+    background: rgba(255, 255, 255, 0.1);
+    height: 150px;
+    resize: none;
+        border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border: none;
+    white-space: pre-wrap;
+    color: #fff;
+    padding: 20px 0 0 12px; /* adjust value  to suit  */
+    box-sizing: border-box;
+    resize: vertical;
+}
+
+.contact-section form input[type=submit] {
+    color: #fff;
+    border: 2px solid #fff;
+    padding: 12px auto 20px auto;
+    border-radius: 4px;
+    width: 168px;
+    text-align: center;
+    text-decoration: none;
+    margin-bottom: 20px;
+    transition: all .4s ease-in;
+    background: none;
+    text-align: center;
+    margin: 52px auto 0 auto;
+    cursor: pointer;
+    text-indent: 0;
+}
+
+/* Footer */
+
+footer {
+    padding: 60px 0 20px 0;
+    background:  rgba(46, 46, 46, 1);
+}
+
+footer .container {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}
+
+footer .container:first-child {
+    margin-bottom: 72px;
+}
+
+footer .container a {
+    color: #fff;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 20px;
+    text-decoration: none;
+    text-transform: uppercase;
+    margin-bottom: 40px;
+}
+
+footer .container a:hover {
+    opacity: .2;
+}
+
+footer .container a:last-child {
+    margin-bottom: 0;
+}
+
+footer p {
+    margin-top: 60px;
+    color: #fff;
+    text-align: center;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 14px;
+}
+
+/*=============================== Tablet breakpoint ===============================*/
+
+@media only screen and (min-width: 767px) {
+
+.hide-on-mobile {
+    display: block;
+}
+
+.hide-on-tablet {
+    display: none;
+}
+
+/* Header section */
+
+nav {
+    padding: 55px 80px 0 0; 
+}
+
+header {
+    background: url('../assets/images/hero_img_tablet.png');
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.logo {
+    width: 70%;
+    text-align: center;
+}
+
+header .container .container-logo div {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 18px;
+}
+
+header .container .container-logo div hr {
+    height: 20px;
+    width: 0;
+    margin: 0 12px;
+}
+
+header .container .container-countdown ul {
+    font-size: 18px;
+}
+
+/* Introduction section */
+
+.intro-section {
+    padding: 80px 80px;
+    text-align: center;
+    color: #fff;
+}
+
+/* Quote section */
+
+.quote-section {
+    height: 45vh;
+    background: url('../assets/images/quote_img_tablet.png');
+}
+
+.quote-section .container blockquote {
+    font-size: 40px;
+    line-height: 50px;
+}
+
+.quote-section .container span {
+    font-size: 20px;
+}
+
+/* Venue section */
+
+.venue-section {
+    padding: 80px 80px 140px 80px;
+}
+
+.venue-section .container {
+    display: flex;
+    flex-direction: row-reverse;
+    background: none;
+    position: relative;
+}
+
+.venue-section .container .container-details {
+    width: 70%;
+    background: #292929;
+    z-index: 10;
+    padding: 20px 28px 20px 80px;
+    position: relative;
+    top: 60px;
+}
+
+.venue-section .container .container-img  {
+    background: url('../assets/images/venue_img_mobile.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 40%;
+    width: 40%;
+    z-index: 11;
+    position: absolute;
+    left: 0;
+}
+
+.venue-section .container a  {
+    z-index: 10;
+}
+
+/* Info section */
+
+.info-section {
+    background: url('../assets/images/skyline_dortmund.svg');
+    background-size: 100%;
+    background-position: 20% 20%;
+    margin-bottom: 80px;
+}
+
+.info-section .container hr {
+    width: 35%;
+    margin: 28px auto;
+}
+
+/* Trailer */
+
+.gallery-section div {
+    margin: 0 auto;
+    text-align: center;
+}
+
+.gallery-section video {
+    width: 60%;
+    height: 50vh;
+    margin: 0 auto;
+    text-align: center;
+}
+
+/* How to section */
+
+.howto-section {
+    padding: 80px 80px;
+    color: #fff;
+}
+
+
+.howto-section .container div div {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-bottom: 36px;
+}
+
+.howto-section .container div div p {
+    color: #fff;
+    opacity: .8;
+    font-family: 'Playfair Display';
+    font-size: 18px;
+    line-height: 28px;
+    width: 80%;
+    text-align: left;
+    margin: 0 auto;
+}
+
+/* Contact section */
+
+.contact-section {
+    padding: 80px 80px;
+}
+}
+
+/*=============================== Desktop breakpoint ===============================*/
+
+
+@media only screen and (min-width: 1024px) {
+
+    .before-left {
+        position: relative;
+        left: -100px;
+    }
+  
+    .move-left {
+      transition: all 700ms;
+      opacity: 0;
+    }
+    
+    .left {
+      transform: translate(100px, 0);
+      opacity: 1;
+    }
+  
+    .before-right {
+      position: relative;
+      right: -100px;
+  }
+  
+  .move-right {
+      transition: all 700ms;
+      opacity: 0;
+    }
+    
+    .right {
+      transform: translate(-100px, 0);
+      opacity: 1;
+    }
+    
+
+/* Global */
+
+h2 {
+    font-family: 'Montserrat', sans-serif;
+    color: #fff;
+    font-size: 48px;
+    line-height: 58px;
+    text-transform: uppercase;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 300;
+    margin-bottom: 44px;
+    text-align: center;
+}
+
+.btn {
+    margin-bottom: 0;
+}
+
+/* Header section */
+
+header {
+    height: 100vh;
+    box-sizing: border-box;
+    background: url('../assets/images/hero_img_desktop.png');
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.burger {
+    display: none !important;
+}
+
+
+nav .menu {
+    display: none;
+}
+
+nav .btn {
+    display: block;
+}
+
+
+.logo {
+    width: 50%;
+    text-align: center;
+}
+
+
+header .header-navigation {
+    display: flex;
+    position: absolute;
+    flex-direction: column;
+    align-items: flex-end;
+    bottom: 40%;
+    right: 100px;
+    color: #fff;
+    font-family: 'Montserrat', sans-serif;
+}
+
+header .header-navigation div {
+    margin-bottom: 20px;
+}
+
+header .header-navigation div:last-child {
+    margin-bottom: 0;
+}
+
+header .header-navigation a {
+    display: flex;
+    align-items: flex-end;
+    text-decoration: none;
+    color: #fff;
+}
+
+header .header-navigation .nav-link-1, .nav-link-2, .nav-link-3, .nav-link-4, .nav-link-5 {
+    opacity: 0;
+    transition: all .2s ease-in;
+}
+
+header .header-navigation a .circle {
+    display: block;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.5);
+    margin-left: 12px;
+    border: 2px solid #fff;
+    cursor: pointer;
+    transition: all .2s ease-in;
+}
+
+header .container .container-countdown {
+    font-family: "Montserrat", sans-serif;
+    width: 50%;
+    margin: 60px auto 0 auto;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+header .header-navigation div .circle-1:hover, .circle-2:hover, .circle-3:hover, .circle-4:hover, .circle-5:hover {
+    transform: scale(1.5);
+}
+
+/* Introduction section */
+
+.intro-section {
+    padding: 100px 146px;
+}
+
+.intro-section .container h3 {
+    font-size: 28px;
+    line-height: 38px;
+    font-weight: 100;
+}
+
+.intro-section .container div  {
+    margin-top: 60px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+.intro-section .container hr  {
+    margin: 36px auto;
+    width: 60%;
+}
+
+.intro-section .container div a:first-child {
+    margin-right: 20px;
+}
+
+/* Quote section */
+
+.quote-section {
+    height: 50vh;
+    background: url('../assets/images/quote_img_desktop.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    color: #fff;
+    display: table;
+    width: 100%;
+    padding: 0 36px;
+}
+
+.quote-section .container blockquote {
+    font-size: 52px;
+    line-height: 62px;
+    margin-bottom: 28px;
+}
+
+/* Venue section */
+
+.venue-section {
+    padding: 100px 146px 100px 146px;
+}
+
+.venue-section .container {
+    text-align: left;
+}
+
+.venue-section .container h2 {
+    text-align: left;
+}
+
+.venue-section .container .container-details div  {
+    margin-top: 52px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+.venue-section .container .container-details div  {
+    margin-top: 52px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+.venue-section .container .container-details .btn {
+    margin-bottom: 0;
+}
+
+.venue-section .container .container-details .btn:first-child {
+    margin-right: 20px;
+}
+
+.venue-section .container .container-details {
+    width: 60%;
+    padding: 40px 40px 40px 12%;
+    position: relative;
+    top: 60px;
+    box-sizing: border-box;
+}
+
+.venue-section .container .container-img  {
+    background: url('../assets/images/venue_img_desktop.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 80%;
+    width: 50%;
+    position: absolute;
+    left: -100px;
+}
+
+.venue-section .container .container-details .read-more-btn {
+    display: none;
+}
+
+.venue-section .container .container-details .more {
+    display: block;
+    margin-top: 12px;
+}
+
+/* Info section */
+
+.info-section {
+    background: url('../assets/images/skyline_dortmund.svg');
+    background-size: 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+    color: #fff;
+    box-sizing: border-box;
+    margin-bottom: 100px;
+    height: 30vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.info-section .container {
+    display: flex;
+    flex-direction: row;
+    text-align: center;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.info-section .container hr {
+    width: 0;
+    margin: 0 40px;
+    height: 100px;
+}
+
+/* How to section */
+
+.howto-section {
+    padding: 100px 146px;
+    color: #fff;
+}
+
+.howto-section .container div {
+    display: flex;  
+    justify-content: center;
+    align-items: flex-start;
+    flex-direction: row;
+}
+
+.howto-section .container div div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 0;
+    width: 20%;
+}
+
+.howto-section .container div div p {
+    text-align: center;
+}
+
+.howto-section .container div div span {
+    margin-bottom: 20px;
+}
+
+/* Contact section */
+
+.contact-section {
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    padding: 100px 146px;
+}
+
+.contact-section form div:first-child {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.contact-section form div:first-child input {
+    display: flex;
+    flex-direction: row;
+    width: 32%;
+}
+
+.contact-section form input[type=submit] {
+    color: #fff;
+    border: 2px solid #fff;
+    padding: 12px 0;
+    border-radius: 4px;
+    width: 168px;
+    text-align: center;
+    text-decoration: none;
+    margin-bottom: 20px;
+    transition: all .4s ease-in;
+    background: none;
+    text-align: center;
+    margin: 52px auto 0 auto;
+    cursor: pointer;
+}
+
+/* Footer */
+
+footer {
+    padding: 60px 146px 80px 146px;
+}
+
+footer .wrapper {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+}
+
+footer .container {
+    display: flex;
+    flex-direction: row;
+    text-align: center;
+}
+
+footer .container:first-child {
+    margin-bottom: 0;
+}
+
+footer .container a {
+    color: #fff;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 16px;
+    text-decoration: none;
+    text-transform: uppercase;
+    margin-bottom: 0;
+    margin-right: 20px;
+}
+
+footer .container a:last-child {
+    margin-right: 0;
+}
+
+footer  p {
+    margin-top: 40px;
+    float: right;
+}
+}
+
+/*=============================== Large Desktop breakpoint ===============================*/
+
+@media only screen and (min-width: 1500px) {
+
+/* Header section */
+
+header .header-navigation {
+    right: 146px;
+}
+
+nav {
+    padding: 55px 146px 0 0; 
+}
+
+/* Introduction section */
+
+.intro-section {
+    padding: 100px 280px;
+}
+
+/* Quote section */
+
+.quote-section {
+    height: 40vh;
+}
+
+/* Venue section */
+
+.venue-section {
+    padding: 100px 280px;
+}
+
+/* Info section */
+
+.info-section {
+    height: 25vh;
+}
+
+/* How to section */
+
+.howto-section {
+    padding: 100px 280px;
+}
+
+/* Contact section */
+
+.contact-section {
+    padding: 100px 280px;
+}
+
+/* Footer */
+
+footer {
+    padding: 60px 280px 80px 280px;
+}
+
+
+
+
+
+
+
+
+
+
+}
