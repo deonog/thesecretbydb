@@ -49,13 +49,20 @@ a {
 h2 {
     font-family: 'Montserrat', sans-serif;
     color: #fff;
-    font-size: 40px;
-    line-height: 50px;
+    font-size: 28px;
+    line-height: 38px;
     text-transform: uppercase;
     font-family: 'Montserrat', sans-serif;
     font-weight: 300;
     margin-bottom: 36px;
     text-align: center;
+}
+
+@media only screen and (max-width: 375px) {
+
+    h2 {
+        font-size: 30px;
+    }
 }
 
 .hide-on-mobile {
@@ -210,12 +217,22 @@ nav .btn {
 	list-style: none;
 	padding: 0;
 }
+
+
 .main-nav a {
 	display: block;
 	padding: 12px 0;
 	color: #fff;
-	font-size: 1.4em;
+    font-size: 1.4em;
+    line-height: 1.4em;
 	text-decoration: none;
+}
+
+@media only screen and (max-width: 360px) {
+    .main-nav a {
+        font-size: 1.2em;
+        line-height: 1.2em;
+    }
 }
 
 .open-main-nav {
@@ -410,6 +427,20 @@ header .container .container-countdown ul {
     align-items: center;
 }
 
+@media only screen and (max-width: 375px) {
+    header .container .container-countdown ul {
+        font-size: 12px;
+    }  
+    
+    header .container .container-countdown ul span {
+        font-size: 16px;
+    }   
+
+    header .container .container-countdown {
+        width: 90%;
+    }
+}
+
 header .container .container-countdown ul:last-child {
     margin-right: 0;
 }
@@ -588,14 +619,6 @@ header .scroll-down-icon {
 }
 
 /* Gallery section */
-
-.gallery-section h2 {
-    font-size: 40px;
-    text-transform: uppercase;
-    text-align: center;
-    color: #fff;
-    margin-bottom: 36px;
-}
 
 .gallery-section video {
     width: 100%;
@@ -782,13 +805,6 @@ footer p {
     text-align: center;
     font-family: 'Montserrat', sans-serif;
     font-size: 14px;
-}
-
-@media only screen and (max-width: 360px) {
-
-    h2 {
-        font-size: 32px;
-    }
 }
 
 /*=============================== Tablet breakpoint ===============================*/
